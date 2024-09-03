@@ -1,4 +1,3 @@
-
 import stylisticTs from '@stylistic/eslint-plugin-ts';
 import stylistic from '@stylistic/eslint-plugin';
 
@@ -22,7 +21,7 @@ export default {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     'import/no-extraneous-dependencies': [
-      'error',
+      'error'
     ],
   },
 }
