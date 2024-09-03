@@ -1,9 +1,8 @@
-<script setup lang="ts"> 
-
+<script setup lang="ts">
 </script>
 
 <template>
     <div>
-        ui
+        not found
     </div>
 </template>
