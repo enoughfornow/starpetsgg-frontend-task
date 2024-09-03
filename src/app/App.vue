@@ -1,20 +1,16 @@
 <script setup lang="ts">
-import  WHeader  from 'widgets/header'
-import { UILayout } from '@/ui'
+import PHome from '../pages/home'
+import PConvert from '../pages/convert'
+import { useRoute } from 'vue-router'
 
 
+
+const route = useRoute()
 
 </script>
 <template>
-    <UILayout>
-        <template #header>
-            <WHeader />
-        </template>
-
-        <template #content>
-            <div>content</div>
-        </template>
-    </UILayout>
+    <PHome v-if="route.path === '/'" />
+    <PConvert v-if="route.path === '/convert'" />
 </template>
 
 
@@ -24,12 +20,14 @@ import { UILayout } from '@/ui'
 * {
   width: 100%;
   /* font-family: "Spectral SC","Spectral SC" */
+  margin: 0;
+  padding: 0;
 }
 html {
   font-size: 4px;
 }
 body {
-  background: #E8E6E6;
+  background: var(--color-gray);
   font-size: 4rem;
   overflow: hidden;
 }

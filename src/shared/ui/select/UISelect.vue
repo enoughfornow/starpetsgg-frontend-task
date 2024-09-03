@@ -1,21 +1,58 @@
-<script setup>
-import { ref } from 'vue'
+<script setup lang="ts">
+import { UIIconTypes, UIIcon } from '@/ui';
 
-const options = [
-  { value: 'option1', label: 'Вариант 1' },
-  { value: 'option2', label: 'Вариант 2' },
-  { value: 'option3', label: 'Вариант 3' },
-]
+interface IProps {
+  selected: UIIconTypes.EIconTypes | null;
+  currencies: UIIconTypes.EIconTypes[];
+}
+interface IEmits {
+  (e: 'update:modelValue', value: UIIconTypes.EIconTypes): void
+}
 
-const selected = ref('')
+
+const props = defineProps<IProps>();
+const emit = defineEmits<IEmits>();
+
+
+
+const classes = {
+  container: [
+    'flex gap-3 el-w-content '
+  ],
+ select: [
+   'decoration-none appearance-none cursor-pointer border-none',
+    'bg-color-black color-gray', 
+    'el-h-md el-w-20',
+    'text-center'
+  ],
+
+}
+
+
+function  handleSelectChange (event) {
+  emit('update:modelValue', event.target.value);
+};
+
+
 </script>
 
-
 <template>
-  <select v-model="selected">
-    <option v-for="option in options" :key="option.value" :value="option.value">
-      {{ option.label }}
+ <div :class="classes.container">
+  <select 
+  :class="classes.select"
+  @change="handleSelectChange"
+  >
+    <option 
+      v-for="(currency, index) in currencies" 
+      :key="index" 
+      :value="currency"
+    >
+      {{ currency.toUpperCase() }}
     </option>
   </select>
+   <UIIcon
+        :key="selected"
+        :name="selected"
+    />
+ </div>
 </template>
-

@@ -1,7 +1,37 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+import { eur, rub, usd } from '../../images/icons';
+
+
+interface IProps {
+  name: string
+}
+
+const props = defineProps<IProps>()
+ 
+const classes = {
+  container: 'flex items-center gap-3 el-w-content p-5',
+  icon: [
+    'cursor-pointer el-w-10 el-h-10 color-gray',
+  ],
+};
+
+const icon = computed(() =>
+  props.name === 'eur'
+    ? eur
+    : props.name === 'rub'
+      ? rub
+      : usd)
 
 </script>
 
+
 <template>
-    <slot/>
+  <div :class="classes.container">
+    <img 
+    :src="icon"
+    :class="classes.icon" />
+      <slot/>
+  </div>
 </template>
+

@@ -1,42 +1,51 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "./src", 
+    "./src",
+    "./shared",
     "./app",
     "./pages"
   ],
   "exclude": [
-    "node_modules", 
+    "node_modules",
   ],
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Node",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "composite": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/shared/*"],
-      "app/*": ["./src/app/*"],
-      "entities/*": ["./src/entities/*"],
-      "widgets/*": ["./src/widgets/*"],
-      "features/*": ["./src/features/*"]
+      "@/*": [
+        "./src/shared/*"
+      ],
+      "app/*": [
+        "./src/app/*"
+      ],
+      "entities/*": [
+        "./src/entities/*"
+      ],
+      "widgets/*": [
+        "./src/widgets/*"
+      ],
+      "features/*": [
+        "./src/features/*"
+      ]
     },
   },
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-    "jsx": "preserve",
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
-  
+  /* Bundler mode */
+  "moduleResolution": "bundler",
+  "allowImportingTsExtensions": true,
+  "isolatedModules": true,
+  "moduleDetection": "force",
+  "noEmit": true,
+  "jsx": "preserve",
+  /* Linting */
+  "strict": true,
+  "noUnusedLocals": true,
+  "noUnusedParameters": true,
+  "noFallthroughCasesInSwitch": true
 }
-
-

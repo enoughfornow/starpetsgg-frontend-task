@@ -33,10 +33,12 @@ export default defineConfig({
         screens: {
             sm: '320px',
             md: '640px',
+            lg: '1200px',
         },
         breakpoints: {
             sm: '320px',
             md: '640px',
+            lg: '1200px',
         },
     },
     rules: [
@@ -60,12 +62,6 @@ export default defineConfig({
         /// </size>
 
         /// <gap>
-        [/^gap-y-([\d]+)$/, ([, num]) => ({
-            'row-gap': `${num}rem`,
-        })],
-        [/^gap-x-([\d]+)$/, ([, num]) => ({
-            'column-gap': `${num}rem`,
-        })],
         [/^gap-([\d]+)$/, ([, num]) => ({
             gap: `${num}rem`,
         })],

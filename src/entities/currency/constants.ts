@@ -1,0 +1,1 @@
+export const keys = ["usd-rub", "rub-usd", "eur-rub", "rub-eur", "usd-eur", "eur-usd"]

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import WHeader from 'widgets/header'
-import WCurrencyExchangeRate from 'widgets/currency-exchange-rate'
+import WCurrencyConverter from 'widgets/currency-converter'
 import { UILayout} from '@/ui'
 
 
@@ -13,7 +13,7 @@ import { UILayout} from '@/ui'
         </template>
 
         <template #content>
-            <WCurrencyExchangeRate/>
+            <WCurrencyConverter/>
         </template>
     </UILayout>
 </template>

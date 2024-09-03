@@ -1,3 +1,3 @@
-import PConvert from './ui/index.vue';
+import PConvert from './PConvert.vue';
 
 export default PConvert;
