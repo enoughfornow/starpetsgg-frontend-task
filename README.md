@@ -7,26 +7,26 @@
 Описание: Приложение для отслеживания курса валют и конвертации. Пользователи могут просматривать текущие курсы, конвертировать валюты.
 
 ## Технологии
- [Vue 3 Composition API](https://vuejs.org){:target="_blank" rel="noopener noreferrer"} -   Использование синтаксиса  `<script setup>`  
+ [Vue 3 Composition API](https://vuejs.org) -   Использование синтаксиса  `<script setup>`  
  для определения состояния и вычислений прямо в шаблоне компонента.  
  Объединение преимуществ Composition API и  `<script setup>`  для создания более модульных и гибких компонентов.
 
-[TypeScript](https://www.typescriptlang.org){:target="_blank" rel="noopener noreferrer"} для типизации
+[TypeScript](https://www.typescriptlang.org) для типизации
 
-[Vue Router](https://router.vuejs.org){:target="_blank" rel="noopener noreferrer"} для навигации между страницами
+[Vue Router](https://router.vuejs.org) для навигации между страницами
 
-[Pinia](https://pinia.vuejs.org){:target="_blank" rel="noopener noreferrer"} для управления состоянием приложения
+[Pinia](https://pinia.vuejs.org) для управления состоянием приложения
 
-[UnoCSS](https://unocss.dev){:target="_blank" rel="noopener noreferrer"} для оптимизации CSS и удаления неиспользуемого кода
+[UnoCSS](https://unocss.dev) для оптимизации CSS и удаления неиспользуемого кода
 
-[Vite](https://vitejs.dev){:target="_blank" rel="noopener noreferrer"} для сборки и оптимизации приложения
+[Vite](https://vitejs.dev) для сборки и оптимизации приложения
 
 
 # **Архитектура**
 
 ### Feature Sliced Design
 
-[Feature Sliced Design](https://feature-sliced.design){:target="_blank" rel="noopener noreferrer"} (FSD) - это архитектурный подход, который фокусируется на разделении приложения на независимые фичи (features), каждая из которых имеет собственную бизнес-логику, данные и представление.
+[Feature Sliced Design](https://feature-sliced.design) (FSD) - это архитектурный подход, который фокусируется на разделении приложения на независимые фичи (features), каждая из которых имеет собственную бизнес-логику, данные и представление.
 
 #### Основные принципы FSD
 
