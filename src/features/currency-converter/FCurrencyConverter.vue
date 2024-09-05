@@ -56,7 +56,7 @@ const inputSecondValue = computed<number>({
   }
 })
 
-function clearValue() {
+function clearInputs() {
   inputFirstValue.value = 0
 }
 

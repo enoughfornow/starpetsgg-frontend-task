@@ -7,7 +7,6 @@ import useFormattedValue from '@/composables/useFormattedValue';
 
 interface IEmits {
   (e: 'update:modelValue', number: number): void
-  (e: 'target', boolean: boolean): void
 }
 interface IProps {
   label?: string
