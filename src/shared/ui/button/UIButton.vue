@@ -7,8 +7,8 @@ interface IEmit {
 const emit = defineEmits<IEmit>()
 
 const classes = {
-    button: 'cursor-pointer el-h-md font-spectral bg-color-black color-gray el-w-content',
-    text: 'font-spectral font-bold font-size-20',
+    button: 'cursor-pointer el-h-md font-spectral bg-color-black color-gray el-w-content p-2',
+    text: 'font-spectral font-bold font-size-15',
 }
 </script>
 

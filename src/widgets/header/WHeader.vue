@@ -12,7 +12,7 @@ import { computed, onMounted, ref } from 'vue';
 const classes = {
   root: 'flex items-center justify-around gap-10 bg-color-black color-gray h-100',
   container: 'el-w-content flex gap-15',
-  selected: 'border-bottom-2 border-color-gray'
+  selected: 'border-bottom-1 border-color-gray'
 }
 
 const router = useRouter()

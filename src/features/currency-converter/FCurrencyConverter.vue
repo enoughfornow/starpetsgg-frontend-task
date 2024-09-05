@@ -8,13 +8,15 @@ import {
   UISelect,
   UITextfield,
   UISelectTypes,
-  UIIcon
+  UIIcon,
+UIButton
 } from '@/ui'
 import useCurrencyConverterStore from './store'
 
 const classes = {
   root: 'flex flex-col el-w-content items-center justify-center gap-5 p-2',
   container: 'flex gap-5',
+  button: 'cursor-pointer mr-12 m-auto',
 }
 
 const currencyConverterStore = useCurrencyConverterStore()
@@ -54,6 +56,10 @@ const inputSecondValue = computed<number>({
   }
 })
 
+function clearValue() {
+  inputFirstValue.value = 0
+}
+
 onMounted(async () => {
   await currencyConverterStore.getCurrencyListRate()
 })
@@ -75,6 +81,12 @@ onMounted(async () => {
       </template>
     </UISelect>
     </div>
+    <UIButton
+      :disabled="inputFirstValue === 0"
+      :class="classes.button"
+       @click="clearValue">
+      сброс
+    </UIButton>
     <div :class="classes.container">
         <UITextfield 
           v-model="inputSecondValue" 
