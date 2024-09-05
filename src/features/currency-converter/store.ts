@@ -9,13 +9,15 @@ const useCurrencyConverterStore = defineStore('currency-converter', () => {
     const currencyListRate = ref<types.ICurrencyConvertList>()
 
     async function getCurrencyListRate() {
-
         const result = await api.getCurrencyList()
+
         if (result) {
-            currencyListRate.value = Object.fromEntries(
-                Object.entries(result)
-                    .filter(([key]) => keys.includes(key))
-                    .map(([key, value]) => [key, value as number]));
+            currencyListRate.value = keys.reduce((acc, key) => {
+                if (key in result) {
+                    acc[key] = result[key];
+                }
+                return acc;
+            }, {});
         }
         return currencyListRate.value
     }

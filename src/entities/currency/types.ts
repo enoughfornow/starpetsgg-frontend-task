@@ -8,3 +8,9 @@ export interface ICurrency {
 export interface ICurrencyConvertList {
     [currency: string]: number
 }
+
+export enum ECurrency {
+    usd = 'usd',
+    eur = 'eur',
+    rub = 'rub'
+}
