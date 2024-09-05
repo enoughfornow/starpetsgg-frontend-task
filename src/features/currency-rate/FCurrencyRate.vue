@@ -13,10 +13,6 @@ function valueToFixed(value: number): string {
   return value ? value.toFixed(2) : "0";
 }
 
-function getSelectedCurrency(key: string): string {
-  return currencyStore.selectedCurrency !== key ? key.toUpperCase() : "";
-}
-
 onMounted(async () => {
   await currencyStore.getCurrencyList();
 })
@@ -29,7 +25,7 @@ onMounted(async () => {
       :key="value">
       <VCurrency
         :value="valueToFixed(value)"
-        :currency="getSelectedCurrency(key + '')"
+        :currency="key + ''"
         :selected-currency="currencyStore.selectedCurrency"
       />
     </div>

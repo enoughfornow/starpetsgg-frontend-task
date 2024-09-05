@@ -21,7 +21,7 @@ const classes = {
         v-if="+value"
         :class="classes.container" >     
             <p :class="classes.text">
-               1 {{ selectedCurrency.toUpperCase() }} = {{ value }} {{ currency }}
+               1 {{ selectedCurrency.toUpperCase() }} = {{ value }} {{ currency.toUpperCase() }}
             </p>
     </div>
 </template>
