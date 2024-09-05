@@ -1,65 +1,29 @@
-import { UIIconTypes } from '@/ui'
+
 import { defineStore } from 'pinia'
-import { types, api, keys } from 'entities/currency'
-import { reactive, ref } from 'vue'
+import { api, keys, types } from 'entities/currency'
+import { ref } from 'vue'
 
 
-const useCurrencyStore = defineStore('currency', () => {
-    const currencies = ref<UIIconTypes.EIconTypes[]>()
+const useCurrencyConverterStore = defineStore('currency-converter', () => {
 
-    const selectedCurrency = ref<UIIconTypes.EIconTypes>(UIIconTypes.EIconTypes.usd)
+    const currencyListRate = ref<types.ICurrencyConvertList>()
 
-    const currencyList = ref<types.ICurrencyRates>()
+    async function getCurrencyListRate() {
 
-    const filteredList = ref({});
-
-    const isLoading = ref(false)
-
-    function selectCurrency(text: UIIconTypes.EIconTypes) {
-        selectedCurrency.value = text
-    }
-
-    async function getCurrencyList() {
         const result = await api.getCurrencyList()
         if (result) {
-            currencyList.value = Object.keys(result).reduce((acc, key) => {
-                if (keys.includes(key)) {
-                    acc[key] = result[key];
-                }
-                return acc;
-            }, {})
+            currencyListRate.value = Object.fromEntries(
+                Object.entries(result)
+                    .filter(([key]) => keys.includes(key))
+                    .map(([key, value]) => [key, value as number]));
         }
-    }
-
-    function filterCurrency() {
-
-        for (const key in currencyList) {
-            if (key.toLowerCase() === selectedCurrency.value) {
-                if (filteredList[key]) {
-                    if (Array.isArray(filteredList[key])) {
-                        filteredList[key].push(currencyList[key]);
-                    } else {
-                        filteredList[key] = [filteredList[key], currencyList[key]];
-                    }
-                } else {
-                    filteredList[key] = currencyList[key];
-                }
-            }
-        }
-
-        return filteredList;
+        return currencyListRate.value
     }
 
     return {
-        currencies,
-        selectedCurrency,
-        currencyList,
-        filteredList,
-        selectCurrency,
-        getCurrencyList,
-        filterCurrency,
-
+        currencyListRate,
+        getCurrencyListRate,
     }
 })
 
-export default useCurrencyStore
+export default useCurrencyConverterStore

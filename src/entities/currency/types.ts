@@ -1,5 +1,10 @@
 
 // объект со всеми валютами
-export interface ICurrencyRates {
-    [key: string]: number;
+export interface ICurrency {
+    [currency: string]: {
+        [rate: string]: number
+    }
+}
+export interface ICurrencyConvertList {
+    [currency: string]: number
 }

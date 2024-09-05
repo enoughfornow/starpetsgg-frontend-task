@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { UIIconTypes, UIIcon } from '@/ui';
+import { UISelectTypes } from '@/ui';
+import { useVModel } from '@vueuse/core';
 
 interface IProps {
-  selected: UIIconTypes.EIconTypes | null;
-  currencies: UIIconTypes.EIconTypes[];
+  modelValue?: UISelectTypes.ESelectTypes
 }
 interface IEmits {
-  (e: 'update:modelValue', value: UIIconTypes.EIconTypes): void
+  (e: 'update:modelValue', value: UISelectTypes.ESelectTypes): void
 }
 
 
@@ -17,21 +17,20 @@ const emit = defineEmits<IEmits>();
 
 const classes = {
   container: [
-    'flex gap-3 el-w-content '
+    'flex gap-3 el-w-content'
   ],
  select: [
-   'decoration-none appearance-none cursor-pointer border-none',
-    'bg-color-black color-gray', 
-    'el-h-md el-w-20',
-    'text-center'
+   'font-montserrat decoration-none cursor-pointer border-none',
+    'bg-color-black color-gray rounded-3', 
+    'w-60 h-50',
+   'text-center',
+  'bg-[url(src/shared/images/icons/sm/arrow.svg)] bg-no-repeat bg-right',
   ],
 
 }
 
+const value = useVModel(props, 'modelValue', emit);
 
-function  handleSelectChange (event) {
-  emit('update:modelValue', event.target.value);
-};
 
 
 </script>
@@ -39,20 +38,17 @@ function  handleSelectChange (event) {
 <template>
  <div :class="classes.container">
   <select 
-  :class="classes.select"
-  @change="handleSelectChange"
+    :class="classes.select"
+    v-model="value"
   >
     <option 
-      v-for="(currency, index) in currencies" 
+      v-for="(item, index) in UISelectTypes.ESelectTypes" 
       :key="index" 
-      :value="currency"
+      :value="item"
     >
-      {{ currency.toUpperCase() }}
+      {{ item.toUpperCase() }}
     </option>
   </select>
-   <UIIcon
-        :key="selected"
-        :name="selected"
-    />
+   <slot name="icon"/>
  </div>
 </template>

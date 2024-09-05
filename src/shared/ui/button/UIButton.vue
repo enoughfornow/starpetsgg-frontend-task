@@ -15,13 +15,12 @@ const classes = {
 
 <template>
     <button 
-    type="button"
-    :class="classes.button"
-    @click="emit('click')"
-    >
-        <p :class="classes.text">
-            <slot/>
-        </p>
+        type="button"
+        :class="classes.button"
+        @click="emit('click')">
+            <p :class="classes.text">
+                <slot/>
+            </p>
     </button>
 </template>
 

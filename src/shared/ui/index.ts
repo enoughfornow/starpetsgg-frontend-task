@@ -2,7 +2,10 @@ import UILayout from "./layout";
 import UIButton from "./button";
 import UILabel from "./label";
 import UITextfield from "./textfield";
-import UISelect from "./select";
+import {
+    UISelect,
+    types as UISelectTypes
+} from "./select";
 import {
     UIIcon,
     types as UIIconTypes
@@ -15,6 +18,7 @@ export {
     UIButton,
     UILabel,
     UITextfield,
+    UISelectTypes,
     UISelect,
     UIIcon,
     UIIconTypes

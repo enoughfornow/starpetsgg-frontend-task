@@ -1,3 +1,6 @@
 import UISelect from "./UISelect.vue";
-
-export default UISelect;
+import * as types from "./types";
+export {
+    UISelect,
+    types
+};

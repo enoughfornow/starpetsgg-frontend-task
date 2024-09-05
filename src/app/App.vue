@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PHome from '../pages/home'
-import PConvert from '../pages/convert'
+import PHome from 'pages/home'
+import PConvert from 'pages/convert'
 import { useRoute } from 'vue-router'
 
 

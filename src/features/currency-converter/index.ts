@@ -1,5 +1,9 @@
-import useCurrencyStore from './store'
+import useCurrencyConverterStore from './store'
+import FCurrencyConverter from './FCurrencyConverter.vue'
 
 
-export { useCurrencyStore }
+export {
+    useCurrencyConverterStore,
+    FCurrencyConverter
+}
 

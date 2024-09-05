@@ -5,7 +5,7 @@ const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => import('../../pages/home'),
+        component: () => import('../../pages/home/PHome.vue'),
         meta: {
             layout: UILayout
         }
@@ -13,14 +13,17 @@ const routes = [
     {
         path: '/convert',
         name: 'convert',
-        component: () => import('../../pages/convert')
-    },
-    {
-        path: '/:pathMatch(.*)',
-        component: () => import('../../pages/not-found'),
+        component: () => import('../../pages/convert/PConvert.vue'),
         meta: {
             layout: UILayout
-        },
+        }
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        component: () => import('../../pages/not-found/PNotFound.vue'),
+        meta: {
+            layout: UILayout
+        }
     }
 ]
 

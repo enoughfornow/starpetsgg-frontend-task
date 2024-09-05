@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { eur, rub, usd } from '../../images/icons';
+import { UISelectTypes } from '@/ui';
+import {
+  eur,
+  rub,
+  usd
+} from '../../images/icons';
 
 
 interface IProps {
-  name: string
+  name: UISelectTypes.ESelectTypes
 }
 
 const props = defineProps<IProps>()
  
 const classes = {
-  container: 'flex items-center gap-3 el-w-content p-5',
+  container: 'flex items-center gap-3 el-w-content',
   icon: [
-    'cursor-pointer el-w-10 el-h-10 color-gray',
+    'cursor-pointer el-w-10 el-h-10 bg-color-gray',
   ],
 };
 

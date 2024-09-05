@@ -1,26 +1,37 @@
 <script setup lang="ts">
-import { useCurrencyStore } from "features/currency-converter";
-import { keys, VCurrency } from 'entities/currency'
-import { UIIcon, UIIconTypes } from '@/ui'
-import { reactive, ref, watch } from "vue";
-import { computed } from "vue";
+import { useCurrencyRateStore } from "features/currency-rate";
+import { VCurrency } from "entities/currency";
+import { computed, onMounted } from "vue";
 
+const currencyStore = useCurrencyRateStore();
 
-const currencyStore = useCurrencyStore()
+const currencyList = computed(() => currencyStore.currencyList);
 
-currencyStore.getCurrencyList()
+const currencyRateList = computed(() => currencyList.value[currencyStore.selectedCurrency]);
 
-const currencyList = computed(() => currencyStore.currencyList)
+function valueToFixed(value: number): string {
+  return value ? value.toFixed(2) : "0";
+}
 
-currencyStore.filterCurrency()
+function getSelectedCurrency(key: string): string {
+  return currencyStore.selectedCurrency !== key ? key.toUpperCase() : "";
+}
 
-const filteredList = computed(() => currencyStore.filteredList)
-
-
+onMounted(async () => {
+  await currencyStore.getCurrencyList();
+})
 </script>
 
 <template>
-       <div v-for="currency in filteredList" :key="currency">
-          {{ currency }}
-       </div>
-</template> 
+  <div v-if="currencyList">
+    <div 
+      v-for="(value, key) in currencyRateList" 
+      :key="value">
+      <VCurrency
+        :value="valueToFixed(value)"
+        :currency="getSelectedCurrency(key + '')"
+        :selected-currency="currencyStore.selectedCurrency"
+      />
+    </div>
+  </div>
+</template>
