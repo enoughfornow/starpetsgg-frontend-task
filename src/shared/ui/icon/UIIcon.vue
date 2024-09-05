@@ -17,7 +17,7 @@ const props = defineProps<IProps>()
 const classes = {
   container: 'flex items-center gap-3 el-w-content',
   icon: [
-    'cursor-pointer el-w-10 el-h-10 bg-color-gray',
+    'el-w-10 el-h-10 bg-color-gray',
   ],
 };
 

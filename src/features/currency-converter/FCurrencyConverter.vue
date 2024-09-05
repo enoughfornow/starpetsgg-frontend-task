@@ -84,7 +84,7 @@ onMounted(async () => {
     <UIButton
       :disabled="inputFirstValue === 0"
       :class="classes.button"
-       @click="clearValue">
+       @click="clearInputs">
       сброс
     </UIButton>
     <div :class="classes.container">
