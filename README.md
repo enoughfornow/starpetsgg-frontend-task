@@ -10,10 +10,15 @@
  [Vue 3 Composition API](https://vuejs.org) -   Использование синтаксиса  `<script setup>`  
  для определения состояния и вычислений прямо в шаблоне компонента.  
  Объединение преимуществ Composition API и  `<script setup>`  для создания более модульных и гибких компонентов.
+
 [TypeScript](https://www.typescriptlang.org) для типизации
+
 [Vue Router](https://router.vuejs.org) для навигации между страницами
+
 [Pinia](https://pinia.vuejs.org) для управления состоянием приложения
+
 [UnoCSS](https://unocss.dev) для оптимизации CSS и удаления неиспользуемого кода
+
 [Vite](https://vitejs.dev) для сборки и оптимизации приложения
 
 
