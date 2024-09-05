@@ -21,6 +21,8 @@
 
 [Vite](https://vitejs.dev) для сборки и оптимизации приложения
 
+[Axios](https://axios-http.com/ru/docs/intro) для запросов
+
 
 # **Архитектура**
 
