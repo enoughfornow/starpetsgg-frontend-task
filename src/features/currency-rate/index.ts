@@ -1,7 +1,7 @@
 import FCurrencyRate from "./FCurrencyRate.vue";
-import useCurrencyRateStore from "./store";
+import useCurrencyStore from "./store";
 
 export {
     FCurrencyRate,
-    useCurrencyRateStore
+    useCurrencyStore
 }

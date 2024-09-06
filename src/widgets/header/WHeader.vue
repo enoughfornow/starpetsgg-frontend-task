@@ -5,7 +5,7 @@ import {
   UISelect,
   UISelectTypes
 } from '@/ui'
-import { useCurrencyRateStore } from 'features/currency-rate'
+import { useCurrencyStore } from 'features/currency-rate'
 import { computed, onMounted, ref } from 'vue';
 
 
@@ -18,7 +18,7 @@ const classes = {
 const router = useRouter()
 const route = useRoute()
 
-const currencyRateStore = useCurrencyRateStore()
+const currencyStore = useCurrencyStore()
 
 
 
@@ -27,7 +27,7 @@ const selectedOption = ref(true)
 
 const selectOption = computed(() => selectedOption.value = route.path === '/' ? true : false)
 
-const currencyList = computed(() => currencyRateStore.currencyList)
+const currencyList = computed(() => currencyStore.currencyList)
 
 
 
@@ -41,14 +41,14 @@ function selectPage(text: string) {
 
 // обновление состояния стора при выборе валюты
 function selectСurrency(text: UISelectTypes.ESelectTypes) {
-  currencyRateStore.selectCurrency(text)
-  if (currencyRateStore.selectedCurrency) {
-   currencyRateStore.getCurrencyList()
+  currencyStore.selectCurrency(text)
+  if (currencyStore.selectedCurrency) {
+   currencyStore.getCurrencyList()
  }
 }
 
 onMounted(async () => {
-  await currencyRateStore.getCurrencyList()
+  await currencyStore.getCurrencyList()
 })
 
 </script>
@@ -76,7 +76,7 @@ onMounted(async () => {
     <UISelect 
         v-if="currencyList"
         @update:modelValue="selectСurrency($event)"
-        :model-value="currencyRateStore.selectedCurrency"
+        :model-value="currencyStore.selectedCurrency"
     />
   </header>
 </template>

@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
 import { UISelectTypes } from '@/ui'
-import { types, api } from 'entities/currency'
+import { types, api, keys } from 'entities/currency'
 import { ref } from 'vue'
 
 
-const useCurrencyRateStore = defineStore('currency-rate', () => {
+const useCurrencyStore = defineStore('currency', () => {
     const selectedCurrency = ref<UISelectTypes.ESelectTypes>(UISelectTypes.ESelectTypes.usd)
 
-    const currencyList = ref<types.ICurrency>({})
+    const currencyList = ref<types.ICurrencyList>({})
 
     function selectCurrency(text: UISelectTypes.ESelectTypes) {
         selectedCurrency.value = text
@@ -19,16 +19,12 @@ const useCurrencyRateStore = defineStore('currency-rate', () => {
     async function getCurrencyList() {
         const result = await api.getCurrencyList()
         if (result) {
-            for (const from in types.ECurrency) {
-                if (types.ECurrency.hasOwnProperty(from)) {
-                    currencyList.value[from] = {};
-                    for (const to in types.ECurrency) {
-                        if (types.ECurrency.hasOwnProperty(to) && from !== to) {
-                            currencyList.value[from][to] = result[`${from}-${to}`];
-                        }
-                    }
+            currencyList.value = keys.reduce((acc, key) => {
+                if (key in result) {
+                    acc[key] = result[key];
                 }
-            }
+                return acc;
+            }, {});
         }
     }
 
@@ -42,4 +38,4 @@ const useCurrencyRateStore = defineStore('currency-rate', () => {
     }
 })
 
-export default useCurrencyRateStore
+export default useCurrencyStore

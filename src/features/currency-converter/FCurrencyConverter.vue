@@ -11,7 +11,7 @@ import {
   UIIcon,
 UIButton
 } from '@/ui'
-import useCurrencyConverterStore from './store'
+import { useCurrencyStore } from 'features/currency-rate'
 
 const classes = {
   root: 'flex flex-col el-w-content items-center justify-center gap-5 p-2',
@@ -19,9 +19,9 @@ const classes = {
   button: 'cursor-pointer mr-12 m-auto',
 }
 
-const currencyConverterStore = useCurrencyConverterStore()
+const currencyStore = useCurrencyStore()
 
-const currencyListRate = computed(() => currencyConverterStore.currencyListRate)
+const currencyList = computed(() => currencyStore.currencyList)
 
 const selectedFirstCurrency = ref<UISelectTypes.ESelectTypes>(UISelectTypes.ESelectTypes.usd)
 const selectedSecondCurrency = ref<UISelectTypes.ESelectTypes>(UISelectTypes.ESelectTypes.rub)
@@ -38,7 +38,7 @@ const inputSecondValue = computed<number>({
         return inputFirstValue.value
       }
       const pair = `${selectedFirstCurrency.value}-${selectedSecondCurrency.value}`
-      const rate = currencyListRate.value?.[pair]
+      const rate = currencyList.value?.[pair]
       return inputFirstValue.value * rate
     }
     return 0
@@ -49,7 +49,7 @@ const inputSecondValue = computed<number>({
         inputFirstValue.value = newValue;
       } else {
         const pair = `${selectedFirstCurrency.value}-${selectedSecondCurrency.value}`
-        const rate = currencyListRate.value?.[pair]
+        const rate = currencyList.value?.[pair]
         inputFirstValue.value = newValue / rate;
       }
     }
@@ -61,7 +61,7 @@ function clearInputs() {
 }
 
 onMounted(async () => {
-  await currencyConverterStore.getCurrencyListRate()
+  await currencyStore.getCurrencyList()
 })
 </script>
 
