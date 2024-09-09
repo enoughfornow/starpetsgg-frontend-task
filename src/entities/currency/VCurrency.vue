@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { UIIcon, UISelectTypes } from '@/ui';
 
-interface Props {
+interface IProps {
     value: string,
     currency: UISelectTypes.ESelectTypes,
     selectedCurrency: UISelectTypes.ESelectTypes
 }
 
- defineProps<Props>()
+ defineProps<IProps>()
 
 const classes = {
     container: 'flex items-center justify-between gap-2',
